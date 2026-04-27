@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 class NoteInput(BaseModel):
     id: int
@@ -45,4 +45,38 @@ class ProcessNotesResponse(BaseModel):
     workspace_id: int
     clusters: List[ClusterOutput]
     topologies: List[TopologyOutput]
+
+# Analytics schemas
+class GraphMetricsRequest(BaseModel):
+    workspace_id: int
+    nodes: List[dict]
+    edges: List[dict]
+
+class GraphMetricsResponse(BaseModel):
+    workspace_id: int
+    node_count: int
+    edge_count: int
+    density: float
+    is_connected: bool
+    avg_degree: float
+    avg_clustering: Optional[float] = None
+    connected_components: int
+    top_pagerank_node: Optional[int] = None
+    top_pagerank_score: Optional[float] = None
+    top_betweenness_node: Optional[int] = None
+    top_betweenness_score: Optional[float] = None
+    pagerank: Optional[Dict[str, float]] = None
+    betweenness: Optional[Dict[str, float]] = None
+    clustering: Optional[Dict[str, float]] = None
+    degree_centrality: Optional[Dict[str, float]] = None
+
+class SentimentRequest(BaseModel):
+    workspace_id: int
+    notes: List[NoteInput]
+    labels: Optional[List[int]] = None
+
+class SentimentResponse(BaseModel):
+    workspace_id: int
+    note_sentiments: List[dict]
+    cluster_sentiments: Optional[Dict[str, dict]] = None
 

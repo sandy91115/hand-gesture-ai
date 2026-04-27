@@ -2,6 +2,7 @@ from typing import List, Dict
 from .embeddingservice import EmbeddingService
 from .clusteringservice import ClusteringService
 from .topologyservice import TopologyService
+from .sentiment_service import SentimentService
 import numpy as np
 
 class GraphService:
@@ -9,13 +10,15 @@ class GraphService:
         self.embedding_service = EmbeddingService()
         self.clustering_service = ClusteringService()
         self.topology_service = TopologyService()
+        self.sentiment_service = SentimentService()
     
-    def process_notes(self, workspace_id: int, notes: List[Dict]) -> Dict:
+    def process_notes(self, workspace_id: int, notes: List[Dict], include_sentiment: bool = True) -> Dict:
         if not notes:
             return {
                 "workspace_id": workspace_id,
                 "clusters": [],
-                "topologies": []
+                "topologies": [],
+                "sentiment": None
             }
         
         # Generate embeddings
@@ -82,9 +85,20 @@ class GraphService:
             "edges": dist_edges
         })
         
+        # Sentiment analysis
+        sentiment = None
+        if include_sentiment:
+            note_sentiments = self.sentiment_service.analyze_notes(notes)
+            cluster_sentiments = self.sentiment_service.analyze_clusters(notes, labels)
+            sentiment = {
+                "note_sentiments": note_sentiments,
+                "cluster_sentiments": {str(k): v for k, v in cluster_sentiments.items()}
+            }
+        
         return {
             "workspace_id": workspace_id,
             "clusters": clusters,
-            "topologies": topologies
+            "topologies": topologies,
+            "sentiment": sentiment
         }
 

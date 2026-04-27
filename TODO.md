@@ -1,42 +1,27 @@
-# MindMesh AI - Build Plan
+# MindMesh AI - Advanced Enhancement TODO
 
-## Phase 1: React Frontend (React + Vite + Tailwind + R3F + Drei)
-- [ ] Setup project with package.json, vite config, tailwind config
-- [ ] Create sample topology JSON files (centralized, decentralized, distributed)
-- [ ] Build 3D graph viewer with React Three Fiber
-- [ ] Implement glowing nodes, edges, hover labels
-- [ ] Add detail panel on node click
-- [ ] Add topology switcher buttons
-- [ ] Add search functionality
-- [ ] Add futuristic responsive UI
-- [ ] Integrate MediaPipe hand tracking
-- [ ] Implement gesture controls (open palm, pinch, two fingers, swipe, fist)
-- [ ] Add webcam preview toggle
+## Phase 1: Frontend Cinematic Visuals ✅
+- [x] GraphScene - animated topology morphing (spring physics)
+- [x] EdgeParticles - flowing dots along edges
+- [x] ClusterHulls - semi-transparent cluster spheres
+- [x] EffectsComposer - bloom, vignette, tone mapping
+- [x] AnalyticsPanel - graph density, centrality, node/edge stats
+- [x] CameraRig - preset save/load + keyboard shortcuts
+- [x] useAppStore - Zustand global state
+- [x] Updated App - integrate all new features
 
-## Phase 2: Laravel Backend
-- [ ] Initialize Laravel 11 with Breeze API
-- [ ] Create migrations (workspaces, notes, idea_clusters, graph_nodes, graph_edges)
-- [ ] Create models with relationships
-- [ ] Create controllers (Workspace, Note, Graph, IdeaCluster)
-- [ ] Create Form Requests with validation
-- [ ] Implement API routes
-- [ ] Add auth middleware
-- [ ] Implement txt file upload and split into notes
-- [ ] Create PythonService HTTP client
-- [ ] Implement graph generation endpoint
-- [ ] Add error handling and policies
+## Phase 2: Python Advanced ML ✅
+- [x] analytics_service.py - PageRank, betweenness, clustering
+- [x] sentiment_service.py - VADER sentiment per note
+- [x] Updated main.py - new endpoints
+- [x] Updated graph_service.py - integrate metrics
 
-## Phase 3: Python FastAPI Microservice
-- [ ] Setup FastAPI with requirements.txt
-- [ ] Create embeddingservice.py
-- [ ] Create clusteringservice.py
-- [ ] Create topologyservice.py (3 layouts)
-- [ ] Create graph_service.py
-- [ ] Implement POST /process-notes endpoint
-- [ ] Add CORS and error handling
+## Phase 3: Backend Advanced Capabilities ✅
+- [x] GraphExportController - JSON/CSV export
+- [x] GraphAnalyticsController - forward Python metrics + sentiment
+- [x] Updated routes
 
-## Phase 4: Integration
-- [ ] Connect Laravel to Python service
-- [ ] Frontend fetches graph data from Laravel
-- [ ] End-to-end testing
-
+## Phase 4: Test & Build ✅
+- [x] npm run build — successful (1,107 KB bundle)
+- [x] python service test — syntax + functional tests passed
+- [x] laravel route test — routes registered successfully

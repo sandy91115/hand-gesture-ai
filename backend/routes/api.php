@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WorkspaceController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\GraphController;
+use App\Http\Controllers\GraphAnalyticsController;
+use App\Http\Controllers\GraphExportController;
 
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {
@@ -25,6 +27,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Graph
     Route::get('/workspaces/{workspace}/graph', [GraphController::class, 'index']);
     Route::post('/workspaces/{workspace}/graph/generate', [GraphController::class, 'generate']);
+
+    // Graph Analytics
+    Route::get('/workspaces/{workspace}/graph/analytics', [GraphAnalyticsController::class, 'metrics']);
+    Route::get('/workspaces/{workspace}/graph/sentiment', [GraphAnalyticsController::class, 'sentiment']);
+
+    // Graph Export
+    Route::get('/workspaces/{workspace}/graph/export', [GraphExportController::class, 'export']);
 });
 
 require __DIR__.'/auth.php';
